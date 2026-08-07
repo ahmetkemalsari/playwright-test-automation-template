@@ -1,0 +1,12 @@
+services:
+  playwright:
+    build: .
+    init: true
+    ipc: host
+    env_file:
+      - .env
+    environment:
+      CI: 'true'
+    volumes:
+      - ./playwright-report:/workspace/playwright-report
+      - ./test-results:/workspace/test-results

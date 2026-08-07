@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+!.env.example
+!config/environments/*.env.example
+playwright-report/
+test-results/
+blob-report/
+playwright/.auth/*
+!playwright/.auth/.gitkeep
+*.log
+.idea/
+.vscode/
+.DS_Store

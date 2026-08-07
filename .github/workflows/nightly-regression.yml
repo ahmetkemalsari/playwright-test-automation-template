@@ -1,0 +1,37 @@
+name: Nightly cross-browser regression
+permissions:
+  contents: read
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      CI: true
+      BASE_URL: https://www.saucedemo.com
+      API_BASE_URL: https://jsonplaceholder.typicode.com
+      TEST_ID_ATTRIBUTE: data-test
+      # Public SauceDemo example credentials; replace with secrets in product repositories.
+      TEST_USERNAME: standard_user
+      TEST_PASSWORD: secret_sauce
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npm run test:regression
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 14

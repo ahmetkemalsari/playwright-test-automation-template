@@ -1,0 +1,64 @@
+{
+  "name": "playwright-test-automation-template",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Production-ready Playwright UI and API automation starter kit",
+  "keywords": [
+    "playwright",
+    "typescript",
+    "test-automation",
+    "e2e-testing",
+    "api-testing",
+    "ui-testing",
+    "quality-assurance"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmetkemalsari/playwright-test-automation-template.git"
+  },
+  "homepage": "https://github.com/ahmetkemalsari/playwright-test-automation-template#readme",
+  "bugs": {
+    "url": "https://github.com/ahmetkemalsari/playwright-test-automation-template/issues"
+  },
+  "scripts": {
+    "test": "playwright test --project=chromium-public --project=chromium --project=api",
+    "test:dev": "cross-env TEST_ENV=dev playwright test --project=chromium-public --project=chromium --project=api",
+    "test:staging": "cross-env TEST_ENV=staging playwright test --project=chromium-public --project=chromium --project=api",
+    "test:prod": "cross-env TEST_ENV=prod playwright test --project=chromium-public --project=chromium --project=api",
+    "test:smoke": "playwright test --grep @smoke --project=chromium-public --project=api",
+    "test:regression": "playwright test --grep @regression",
+    "test:api": "playwright test --grep @api --project=api",
+    "test:e2e": "playwright test --grep @e2e --project=chromium",
+    "test:chromium": "playwright test --project=chromium-public --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:headed": "playwright test --project=chromium --headed",
+    "test:debug": "playwright test --project=chromium --debug",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@playwright/test": "1.62.1",
+    "@types/node": "^24.1.0",
+    "cross-env": "^10.0.0",
+    "dotenv": "^17.2.1",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-playwright": "^2.2.2",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0"
+  }
+}
